@@ -20,7 +20,7 @@ export default function App() {
   function addTimer() {
     const newTimer = { time: 100, text: 'yoo' }
 
-    setTimers(tiemrs => [...timers, newTimer]);
+    setTimers(timers => [...timers, newTimer]);
   }
 
   return (
