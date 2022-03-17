@@ -8,7 +8,7 @@ export default function TimerSlot({index, timer, handleBlur}) {
         <input 
           type="number" 
           value={time}
-          onChange={(e) => setTime(e.target.value)}
+          onChange={(e) => setTime(Number(e.target.value))}
           onBlur={() => handleBlur(index, time, text)}
         />
         <input 
