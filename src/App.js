@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './App.css';
 import TimerSlot from './components/TimerSlot';
+import './App.css';
 
 export default function App() {
   const [timers, setTimers] = useState([
