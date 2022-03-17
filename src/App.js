@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useStopwatch } from 'react-timer-hook';
+
 import TimerSlot from './components/TimerSlot';
 import './App.css';
 
@@ -8,6 +10,8 @@ export default function App() {
     { time: 5, text: 'love'},
     { time: 7, text: 'you'},
   ]);
+
+  const { seconds, isRunning, start, reset } = useStopwatch({ autoStart: false });
 
   function handleBlur(index, time, text) {
     const newTimers = [...timers];
@@ -37,12 +41,12 @@ export default function App() {
       </div>
 
       {/* seconds */}
-      <h2>0</h2>
+      <h2>{seconds}</h2>
 
       {/* buttons */}
       <div className="buttons">
-        <button className="start-button">Start</button>
-        <button className="stop-button">Stop</button>
+        {!isRunning && <button className="start-button" onClick={start}>Start</button>}
+        {isRunning && <button className="stop-button" onClick={() => reset(0, false)}>Stop</button>}
       </div>
     </div>
   );
