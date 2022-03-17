@@ -8,6 +8,21 @@ export default function App() {
     { time: 5, text: 'love'},
     { time: 7, text: 'you'},
   ]);
+
+  function handleBlur(index, time, text) {
+    const newTimers = [...timers];
+    newTimers[index].time = time;
+    newTimers[index].text = text;
+
+    setTimers(newTimers);
+  }
+
+  function addTimer() {
+    const newTimer = { time: 100, text: 'yoo' }
+
+    setTimers(tiemrs => [...timers, newTimer]);
+  }
+
   return (
     <div className="app">
       <h2>Talk the Talk</h2>
@@ -15,10 +30,10 @@ export default function App() {
       <div className="timers">
         {/* timers go here */}
         {timers.map((timer, index) =>  (
-            <TimerSlot key={index} index={index} timer={timer} />
+            <TimerSlot key={index} index={index} timer={timer} handleBlur={handleBlur}/>
         ))}
 
-        <button className="add-button">Add</button>
+        <button className="add-button" onClick={addTimer}>Add</button>
       </div>
 
       {/* seconds */}

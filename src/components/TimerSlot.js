@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function TimerSlot({index, timer}) {
+export default function TimerSlot({index, timer, handleBlur}) {
     const [time, setTime] = useState(timer.time);
     const [text, setText] = useState(timer.text);
     return (
@@ -9,11 +9,13 @@ export default function TimerSlot({index, timer}) {
           type="number" 
           value={time}
           onChange={(e) => setTime(e.target.value)}
+          onBlur={() => handleBlur(index, time, text)}
         />
         <input 
           type="text" 
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onBlur={() => handleBlur(index, time, text)}
         />
       </form>
     )
