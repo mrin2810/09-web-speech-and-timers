@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 
 import TimerSlot from './components/TimerSlot';
@@ -26,6 +26,18 @@ export default function App() {
 
     setTimers(timers => [...timers, newTimer]);
   }
+  
+  useEffect(() => {
+    const foundTimer = timers.find(timer => timer.time === seconds);
+    if (foundTimer) {
+      // this is where we will speak the text
+    }
+
+    // check to see if seconds > last time
+    if(seconds > timers[timers.length - 1].time) {
+      reset(0, false);
+    }
+  }, [seconds, timers, reset])
 
   return (
     <div className="app">
